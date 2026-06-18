@@ -3,42 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentation Design Studio | Portfolio & Rate Card 2026</title>
-    <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap)" rel="stylesheet">
+    <title>Widhi Dhana Y | Data Analyst & Business Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #818cf8;
+            --primary-dark: #3730a3;
+            --bg-primary: #f8fafc;
+            --bg-secondary: #f1f4f9;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: all 0.3s ease;
+            --star-color: #fbbf24;
+            --star-empty: #d1d5db;
+        }
+
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #0f172a;
-            --accent: #f59e0b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --border: #e2e8f0;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--light);
-            color: var(--secondary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
         }
 
-        /* Navigation */
+        ::selection {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== SCROLL PROGRESS ===== */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--primary);
+            z-index: 10000;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-block;
+            padding: 10px 28px;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(79, 70, 229, 0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1.5px solid var(--border-color);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-sm {
+            padding: 6px 16px;
+            font-size: 0.8rem;
+        }
+
+        /* ===== NAVIGATION ===== */
         nav {
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            left: 0;
+            right: 0;
+            z-index: 999;
+            padding: 14px 0;
+            background: rgba(248, 250, 252, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        nav.scrolled {
+            padding: 10px 0;
+            background: rgba(248, 250, 252, 0.97);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
         }
 
         nav .container {
@@ -48,870 +145,1022 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: var(--secondary);
+            letter-spacing: -0.3px;
+            color: var(--text-primary);
         }
-
         .logo span {
             color: var(--primary);
         }
 
         .nav-links {
-            display: flex;
-            gap: 2rem;
             list-style: none;
+            display: flex;
+            gap: 28px;
+            align-items: center;
         }
-
         .nav-links a {
+            color: var(--text-secondary);
             text-decoration: none;
-            color: var(--gray);
+            font-size: 0.85rem;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
-
         .nav-links a:hover {
             color: var(--primary);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .mobile-toggle span {
+            width: 26px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 4px;
+            transition: var(--transition);
         }
 
-        /* Hero Section */
+        /* ===== HERO ===== */
         .hero {
+            padding: 130px 0 70px;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding-top: 80px;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f4f9 100%);
         }
 
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 50px;
             align-items: center;
         }
 
         .hero-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: 3rem;
+            font-weight: 700;
             line-height: 1.2;
-            margin-bottom: 1.5rem;
+            margin-bottom: 16px;
         }
-
         .hero-text h1 span {
             color: var(--primary);
         }
-
         .hero-text p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin-bottom: 28px;
         }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-            margin-left: 1rem;
-        }
-
-        .btn-outline:hover {
-            background: var(--secondary);
-            color: white;
-        }
-
-        .hero-visual {
-            position: relative;
+        .hero-text .btn {
+            margin-right: 10px;
+            margin-bottom: 6px;
         }
 
         .hero-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-            transform: rotate(3deg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 32px 36px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .hero-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
         }
 
-        .hero-card-inner {
-            background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
-            border-radius: 12px;
-            padding: 2rem;
-            color: white;
+        .hero-card-inner h3 {
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+            color: var(--text-primary);
+        }
+        .hero-card-inner p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 12px;
         }
-
         .stat-item {
             text-align: center;
+            padding: 10px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
         }
-
         .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
         }
-
         .stat-label {
-            font-size: 0.85rem;
-            opacity: 0.9;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
         }
 
-        /* Section Styling */
-        section {
-            padding: 6rem 0;
-        }
-
+        /* ===== SECTION HEADERS ===== */
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 40px;
         }
-
         .section-tag {
             display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary);
+            background: rgba(79, 70, 229, 0.08);
+            padding: 4px 14px;
+            border-radius: 50px;
+            margin-bottom: 8px;
         }
-
         .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
         }
-
         .section-subtitle {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 600px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 560px;
             margin: 0 auto;
         }
 
-        /* Portfolio Section */
-        #portfolio {
-            background: white;
+        section {
+            padding: 70px 0;
         }
 
+        /* ===== PORTFOLIO ===== */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
         }
 
         .portfolio-card {
-            background: var(--light);
-            border-radius: 16px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
             overflow: hidden;
-            transition: all 0.3s;
-            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
-
         .portfolio-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
         }
 
         .portfolio-image {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
+            height: 180px;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px 20px;
             position: relative;
-            overflow: hidden;
         }
-
-        .portfolio-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7));
-        }
-
         .portfolio-category {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: white;
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.65rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3px 12px;
+            border-radius: 50px;
+            color: #fff;
         }
 
         .portfolio-info {
-            padding: 1.5rem;
+            padding: 18px 22px 22px;
         }
-
         .portfolio-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text-primary);
         }
-
         .portfolio-desc {
-            color: var(--gray);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
         }
-
         .portfolio-tags {
             display: flex;
-            gap: 0.5rem;
             flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
         }
-
         .tag {
-            background: var(--border);
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             font-weight: 500;
+            background: var(--bg-secondary);
+            padding: 3px 10px;
+            border-radius: 50px;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
         }
 
-        /* Rate Card Section */
-        #rates {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
+        /* Rating Stars */
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+        .stars {
+            display: flex;
+            gap: 2px;
+            cursor: pointer;
+        }
+        .stars .star {
+            font-size: 1.2rem;
+            color: var(--star-empty);
+            transition: var(--transition);
+        }
+        .stars .star.active {
+            color: var(--star-color);
+        }
+        .stars .star:hover {
+            transform: scale(1.1);
+        }
+        .rating-text {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .rating-average {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
-        #rates .section-title,
-        #rates .section-subtitle {
-            color: white;
-        }
-
-        #rates .section-subtitle {
-            opacity: 0.8;
-        }
-
+        /* ===== RATE CARD ===== */
         .rate-category {
-            margin-bottom: 4rem;
+            margin-top: 40px;
         }
-
         .rate-category-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
         }
 
         .rate-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
         }
 
         .rate-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px 22px;
+            transition: var(--transition);
             position: relative;
-            overflow: hidden;
+            box-shadow: var(--shadow);
         }
-
-        .rate-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
         .rate-card:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
         }
-
-        .rate-card:hover::before {
-            opacity: 1;
-        }
-
         .rate-card.popular {
             border-color: var(--primary);
-            background: rgba(37, 99, 235, 0.1);
-        }
-
-        .rate-card.popular::before {
-            opacity: 1;
+            background: rgba(79, 70, 229, 0.03);
         }
 
         .popular-badge {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--accent);
-            color: var(--secondary);
-            padding: 0.3rem 0.8rem;
+            top: -8px;
+            right: 16px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 12px;
             border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
         }
 
         .rate-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: var(--text-primary);
+        }
+        .rate-price {
             font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .rate-price {
-            font-size: 2rem;
-            font-weight: 800;
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 2px;
         }
-
         .rate-price span {
-            font-size: 1rem;
+            font-size: 0.75rem;
             font-weight: 400;
-            opacity: 0.7;
+            color: var(--text-secondary);
         }
-
         .rate-suitable {
-            font-size: 0.9rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
         }
 
         .rate-features {
             list-style: none;
         }
-
         .rate-features li {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 3px 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            font-size: 0.95rem;
+            gap: 6px;
         }
-
         .rate-features li::before {
             content: '✓';
-            color: #22c55e;
+            color: var(--primary);
             font-weight: 700;
         }
 
-        /* Add-ons Section */
+        /* Add-ons */
         .addons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
         }
-
         .addon-item {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            padding: 10px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
-
+        .addon-item:hover {
+            border-color: var(--primary);
+        }
         .addon-name {
             font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--text-primary);
         }
-
         .addon-price {
-            color: var(--accent);
-            font-weight: 700;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
         }
 
-        /* Process Section */
-        #process {
-            background: white;
+        .notes-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-top: 32px;
+        }
+        .notes-box h4 {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .notes-box ul {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+        .notes-box ul li {
+            padding: 4px 0;
+            font-size: 0.85rem;
         }
 
+        /* ===== PROCESS ===== */
         .process-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        .process-step {
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
             text-align: center;
-            padding: 2rem;
-            position: relative;
         }
-
-        .process-step::after {
-            content: '→';
-            position: absolute;
-            right: -1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: var(--border);
+        .process-step {
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
-
-        .process-step:last-child::after {
-            display: none;
+        .process-step:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
         }
-
         .process-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), #7c3aed);
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: white;
-            margin: 0 auto 1.5rem;
-        }
-
-        .process-title {
             font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin: 0 auto 12px;
+            color: #fff;
         }
-
-        .process-desc {
-            color: var(--gray);
+        .process-title {
+            font-weight: 600;
+            margin-bottom: 4px;
             font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+        .process-desc {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
         }
 
-        /* Testimonials */
-        #testimonials {
-            background: var(--light);
-        }
-
+        /* ===== TESTIMONIALS ===== */
         .testimonial-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
         }
-
         .testimonial-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px 22px;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
         }
-
+        .testimonial-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        .testimonial-card .testimonial-stars {
+            margin-bottom: 8px;
+        }
+        .testimonial-card .testimonial-stars .star {
+            color: var(--star-color);
+            font-size: 0.9rem;
+        }
         .testimonial-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            line-height: 1.7;
         }
-
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 12px;
         }
-
         .author-avatar {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), #7c3aed);
+            background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: 700;
-        }
-
-        .author-name {
-            font-weight: 700;
-        }
-
-        .author-role {
-            color: var(--gray);
+            font-weight: 600;
             font-size: 0.9rem;
+            flex-shrink: 0;
+            color: #fff;
+        }
+        .author-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+        .author-role {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        .testimonial-date {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+        .testimonial-empty {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: 40px;
+            grid-column: 1 / -1;
         }
 
-        /* Contact Section */
-        #contact {
-            background: white;
+        /* Testimonial Form */
+        .testimonial-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 0 auto;
         }
-
-        .contact-grid {
+        .testimonial-form h3 {
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+        .testimonial-form .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 16px;
+        }
+        .testimonial-form .form-group {
+            margin-bottom: 14px;
+        }
+        .testimonial-form .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: var(--text-secondary);
+        }
+        .testimonial-form .form-group input,
+        .testimonial-form .form-group select,
+        .testimonial-form .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .testimonial-form .form-group input:focus,
+        .testimonial-form .form-group select:focus,
+        .testimonial-form .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
+        }
+        .testimonial-form .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .testimonial-form .star-rating-input {
+            display: flex;
+            gap: 6px;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        .testimonial-form .star-rating-input .star {
+            color: var(--star-empty);
+            transition: var(--transition);
+        }
+        .testimonial-form .star-rating-input .star.active {
+            color: var(--star-color);
+        }
+        .testimonial-form .star-rating-input .star:hover {
+            transform: scale(1.1);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 16px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-hover);
+            z-index: 9999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            max-width: 400px;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast.success {
+            border-left: 4px solid #22c55e;
+        }
+        .toast.error {
+            border-left: 4px solid #ef4444;
+        }
+        .toast .toast-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .toast .toast-message {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
         }
 
         .contact-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+            color: var(--text-primary);
         }
-
-        .contact-info p {
-            color: var(--gray);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
+        .contact-info > p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+        .contact-icon {
+            font-size: 1.2rem;
+            width: 32px;
+            text-align: center;
+        }
+        .contact-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .contact-value {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-primary);
         }
 
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--light);
-            border-radius: 12px;
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .contact-label {
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-
-        .contact-value {
-            font-weight: 600;
+            text-decoration: none;
             font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .social-links a:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
         }
 
         .contact-form {
-            background: var(--light);
-            border-radius: 20px;
-            padding: 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            box-shadow: var(--shadow);
         }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-row {
+        .contact-form .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 16px;
+        }
+        .contact-form .form-group {
+            margin-bottom: 16px;
+        }
+        .contact-form .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: var(--text-secondary);
+        }
+        .contact-form .form-group input,
+        .contact-form .form-group select,
+        .contact-form .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .contact-form .form-group input:focus,
+        .contact-form .form-group select:focus,
+        .contact-form .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
+        }
+        .contact-form .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .contact-form .form-group select option {
+            background: var(--bg-card);
         }
 
-        /* Footer */
+        /* ===== FOOTER ===== */
         footer {
-            background: var(--secondary);
-            color: white;
-            padding: 4rem 0 2rem;
+            background: var(--bg-secondary);
+            padding: 50px 0 24px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
         }
-
         .footer-content {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 40px;
+            margin-bottom: 32px;
         }
-
         .footer-brand .logo {
-            color: white;
-            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: var(--text-primary);
         }
-
         .footer-brand p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            max-width: 280px;
+            margin-top: 8px;
         }
-
         .footer-title {
-            font-weight: 700;
-            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
         }
-
         .footer-links {
             list-style: none;
         }
-
         .footer-links li {
-            margin-bottom: 0.75rem;
+            padding: 3px 0;
         }
-
         .footer-links a {
-            color: rgba(255,255,255,0.7);
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: 0.85rem;
+            transition: var(--transition);
         }
-
         .footer-links a:hover {
-            color: white;
+            color: var(--primary);
         }
-
         .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.5);
-            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
         }
 
-        /* Modal */
+        /* ===== MODAL ===== */
         .modal {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 20px;
         }
-
-        .modal.active {
+        .modal.open {
             display: flex;
         }
-
         .modal-content {
-            background: white;
-            border-radius: 20px;
-            max-width: 900px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            max-width: 560px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
+            animation: modalFade 0.25s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
-
+        @keyframes modalFade {
+            from {
+                opacity: 0;
+                transform: scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
         .modal-close {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 40px;
-            height: 40px;
-            border: none;
-            background: var(--light);
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-
-        .modal-image {
-            width: 100%;
-            height: 400px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 20px 20px 0 0;
-        }
-
-        .modal-body {
-            padding: 2rem;
-        }
-
-        .modal-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .modal-meta {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--gray);
-        }
-
-        .modal-desc {
-            color: var(--gray);
-            line-height: 1.8;
-        }
-
-        /* Mobile Menu */
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
+            top: 12px;
+            right: 16px;
+            font-size: 1.6rem;
             background: none;
             border: none;
+            color: var(--text-secondary);
             cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+        }
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+        .modal-image {
+            height: 170px;
+            border-radius: var(--radius) var(--radius) 0 0;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px 20px;
+        }
+        .modal-body {
+            padding: 24px 28px 28px;
+        }
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: var(--text-primary);
+        }
+        .modal-meta {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+        .modal-desc {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
-        .mobile-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--secondary);
-            border-radius: 2px;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-
-            .hero-visual {
-                display: none;
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
             }
-
-            .process-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .hero-card {
+                max-width: 100%;
             }
-
-            .process-step::after {
-                display: none;
+            .hero-text .btn {
+                margin-right: 6px;
             }
 
             .contact-grid {
                 grid-template-columns: 1fr;
             }
-
             .footer-content {
                 grid-template-columns: 1fr 1fr;
+                gap: 28px;
+            }
+            .testimonial-form .form-row {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(248, 250, 252, 0.98);
+                padding: 20px 24px;
+                border-bottom: 1px solid var(--border-color);
+                gap: 14px;
             }
-
+            .nav-links.open {
+                display: flex;
+            }
             .mobile-toggle {
                 display: flex;
             }
 
-            .hero-text h1 {
-                font-size: 2.5rem;
+            .hero {
+                padding: 110px 0 50px;
+                min-height: auto;
             }
-
-            .section-title {
+            .hero-text h1 {
                 font-size: 2rem;
             }
 
-            .process-grid {
-                grid-template-columns: 1fr;
+            .section-title {
+                font-size: 1.8rem;
             }
 
-            .form-row {
+            .portfolio-grid {
                 grid-template-columns: 1fr;
+            }
+            .rate-cards {
+                grid-template-columns: 1fr;
+            }
+            .contact-form .form-row {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+            .stat-number {
+                font-size: 1.1rem;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modal-content {
+                max-width: 100%;
+                margin: 12px;
+            }
+
+            .testimonial-form {
+                padding: 20px;
             }
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.6rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .hero-text .btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-right: 0;
             }
-        }
-
-        .animate {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        /* Scroll Progress */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            z-index: 1001;
-            width: 0%;
-            transition: width 0.1s;
+            .hero-text .btn-outline {
+                margin-top: 8px;
+            }
+            .hero-card {
+                padding: 20px;
+            }
+            .contact-form {
+                padding: 18px;
+            }
+            section {
+                padding: 50px 0;
+            }
         }
     </style>
 </head>
 <body>
     <div class="scroll-progress" id="scrollProgress"></div>
 
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-title" id="toastTitle">Success!</div>
+        <div class="toast-message" id="toastMessage">Your action was successful.</div>
+    </div>
+
     <!-- Navigation -->
-    <nav>
+    <nav id="navbar">
         <div class="container">
-            <div class="logo">Slide<span>Studio</span></div>
-            <ul class="nav-links">
+            <div class="logo">Widhi<span>Dhana</span></div>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#rates">Rate Card</a></li>
                 <li><a href="#process">Proses</a></li>
                 <li><a href="#testimonials">Testimonial</a></li>
                 <li><a href="#contact">Kontak</a></li>
             </ul>
-            <button class="mobile-toggle" id="mobileToggle">
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -924,19 +1173,19 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Presentasi yang <span>Memukau</span> & Meyakinkan</h1>
-                    <p>Membantu pembuatan presentasi profesional untuk corporate, startup, agency, dan kebutuhan akademik. Dari pitch deck hingga sidang skripsi.</p>
+                    <h1>Mengubah Data Menjadi <span>Keputusan Bisnis</span> yang Jelas</h1>
+                    <p>Membantu bisnis, UMKM, dan profesional mengolah data operasional menjadi laporan rapi, dashboard informatif, sistem efisien, dan presentasi meyakinkan.</p>
                     <a href="#rates" class="btn btn-primary">Lihat Rate Card</a>
                     <a href="#portfolio" class="btn btn-outline">Portfolio</a>
                 </div>
                 <div class="hero-visual">
                     <div class="hero-card">
                         <div class="hero-card-inner">
-                            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Trusted by 500+ Clients</h3>
-                            <p style="opacity: 0.9; font-size: 0.95rem;">Corporate • Startup • Academic</p>
+                            <h3>Trusted by 500+ Clients</h3>
+                            <p>Corporate • UMKM • Startup • Akademik</p>
                             <div class="stats-grid">
                                 <div class="stat-item">
-                                    <div class="stat-number">500+</div>
+                                    <div class="stat-number" id="totalProjects">500+</div>
                                     <div class="stat-label">Projects</div>
                                 </div>
                                 <div class="stat-item">
@@ -961,99 +1210,11 @@
             <div class="section-header">
                 <span class="section-tag">Portfolio</span>
                 <h2 class="section-title">Project Terbaru</h2>
-                <p class="section-subtitle">Beberapa contoh project yang telah kami kerjakan untuk berbagai klien</p>
+                <p class="section-subtitle">Beberapa contoh project yang telah dikerjakan untuk berbagai klien</p>
             </div>
 
-            <div class="portfolio-grid">
-                <div class="portfolio-card" onclick="openModal(0)">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <span class="portfolio-category">Investor Pitch</span>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">TechVenture Series A Pitch Deck</h3>
-                        <p class="portfolio-desc">Pitch deck untuk startup fintech yang berhasil mendapatkan funding Series A senilai $5M</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">25 Slides</span>
-                            <span class="tag">Startup</span>
-                            <span class="tag">Investor Ready</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card" onclick="openModal(1)">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        <span class="portfolio-category">Corporate</span>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">Annual Report PT Maju Bersama</h3>
-                        <p class="portfolio-desc">Laporan tahunan dengan visualisasi data komprehensif untuk RUPS perusahaan manufaktur</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">40 Slides</span>
-                            <span class="tag">Data Viz</span>
-                            <span class="tag">Bilingual</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card" onclick="openModal(2)">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        <span class="portfolio-category">Sales Proposal</span>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">Agency Credentials Deck</h3>
-                        <p class="portfolio-desc">Company profile dan case study untuk digital marketing agency pitching ke klien enterprise</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">30 Slides</span>
-                            <span class="tag">Agency</span>
-                            <span class="tag">Case Study</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card" onclick="openModal(3)">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
-                        <span class="portfolio-category">Academic</span>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">Thesis Defense - UI Economics</h3>
-                        <p class="portfolio-desc">Presentasi sidang skripsi tentang economic policy impact analysis dengan visualisasi data ekonomi</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">15 Slides</span>
-                            <span class="tag">Academic</span>
-                            <span class="tag">Research</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card" onclick="openModal(4)">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                        <span class="portfolio-category">Board Meeting</span>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">Q4 Strategy Review - FMCG Corp</h3>
-                        <p class="portfolio-desc">Executive presentation untuk board of directors dengan strategic roadmap dan financial projections</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">28 Slides</span>
-                            <span class="tag">Executive</span>
-                            <span class="tag">Strategy</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card" onclick="openModal(5)">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-                        <span class="portfolio-category">Competition</span>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">Business Case Competition - Winner</h3>
-                        <p class="portfolio-desc">Deck kompetisi bisnis tingkat nasional yang berhasil meraih juara 1</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">20 Slides</span>
-                            <span class="tag">Student</span>
-                            <span class="tag">1st Place</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Portfolio cards will be rendered by JavaScript -->
             </div>
         </div>
     </section>
@@ -1063,22 +1224,98 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Rate Card 2026</span>
-                <h2 class="section-title">Transparent Pricing</h2>
-                <p class="section-subtitle">Pilih paket yang sesuai dengan kebutuhan presentasi Anda</p>
+                <h2 class="section-title">Harga Transparan</h2>
+                <p class="section-subtitle">Pilih paket yang sesuai dengan kebutuhan analisis dan presentasi Anda</p>
             </div>
 
-            <!-- Corporate Package -->
+            <!-- Data Analysis Package -->
             <div class="rate-category">
-                <h3 class="rate-category-title">💼 Corporate / Business Package</h3>
+                <h3 class="rate-category-title">📊 Data Analysis & Reporting</h3>
                 <div class="rate-cards">
                     <div class="rate-card">
-                        <div class="rate-name">Starter Deck</div>
+                        <div class="rate-name">Basic Report</div>
                         <div class="rate-price">Rp1.500.000 <span>mulai dari</span></div>
-                        <div class="rate-suitable">Internal meeting • Company profile sederhana</div>
+                        <div class="rate-suitable">Laporan operasional sederhana</div>
+                        <ul class="rate-features">
+                            <li>Data cleaning & processing</li>
+                            <li>Excel / Google Sheets report</li>
+                            <li>Chart & visualization</li>
+                            <li>1x revisi</li>
+                        </ul>
+                    </div>
+
+                    <div class="rate-card popular">
+                        <span class="popular-badge">POPULAR</span>
+                        <div class="rate-name">Business Dashboard</div>
+                        <div class="rate-price">Rp3.500.000 <span>mulai dari</span></div>
+                        <div class="rate-suitable">Dashboard monitoring & analisis</div>
+                        <ul class="rate-features">
+                            <li>Interactive dashboard</li>
+                            <li>Power BI / Looker Studio</li>
+                            <li>KPI & metric tracking</li>
+                            <li>Executive summary</li>
+                            <li>2x revisi</li>
+                        </ul>
+                    </div>
+
+                    <div class="rate-card">
+                        <div class="rate-name">Advanced Analytics</div>
+                        <div class="rate-price">Rp7.500.000 <span>mulai dari</span></div>
+                        <div class="rate-suitable">Analisis mendalam & prediktif</div>
+                        <ul class="rate-features">
+                            <li>Predictive modeling</li>
+                            <li>Python / R analysis</li>
+                            <li>Deep business insights</li>
+                            <li>Strategic recommendations</li>
+                            <li>3x revisi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business System Development -->
+            <div class="rate-category">
+                <h3 class="rate-category-title">💻 Business System Development</h3>
+                <div class="rate-cards">
+                    <div class="rate-card">
+                        <div class="rate-name">Simple System</div>
+                        <div class="rate-price">Rp5.000.000 <span>mulai dari</span></div>
+                        <div class="rate-suitable">Sistem sederhana untuk UMKM</div>
+                        <ul class="rate-features">
+                            <li>Inventory / Sales tracking</li>
+                            <li>Simple reporting</li>
+                            <li>Responsive web</li>
+                            <li>1x revisi</li>
+                        </ul>
+                    </div>
+
+                    <div class="rate-card popular">
+                        <span class="popular-badge">BEST VALUE</span>
+                        <div class="rate-name">Full System</div>
+                        <div class="rate-price">Rp10.000.000 <span>mulai dari</span></div>
+                        <div class="rate-suitable">Sistem bisnis terintegrasi</div>
+                        <ul class="rate-features">
+                            <li>Inventory + Sales + Supplier</li>
+                            <li>Dashboard & reporting</li>
+                            <li>User management</li>
+                            <li>Data export</li>
+                            <li>2x revisi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Presentation Design -->
+            <div class="rate-category">
+                <h3 class="rate-category-title">🎯 Presentation & Business Deck</h3>
+                <div class="rate-cards">
+                    <div class="rate-card">
+                        <div class="rate-name">Basic Deck</div>
+                        <div class="rate-price">Rp1.000.000 <span>mulai dari</span></div>
+                        <div class="rate-suitable">Internal meeting • Simple proposal</div>
                         <ul class="rate-features">
                             <li>Up to 10 slides</li>
-                            <li>Clean professional layout</li>
-                            <li>Minor redesign</li>
+                            <li>Clean professional design</li>
                             <li>1x revisi</li>
                         </ul>
                     </div>
@@ -1086,57 +1323,26 @@
                     <div class="rate-card popular">
                         <span class="popular-badge">POPULAR</span>
                         <div class="rate-name">Business Deck</div>
-                        <div class="rate-price">Rp3.500.000 <span>mulai dari</span></div>
-                        <div class="rate-suitable">Sales proposal • Client presentation • Marketing</div>
+                        <div class="rate-price">Rp2.500.000 <span>mulai dari</span></div>
+                        <div class="rate-suitable">Client presentation • Sales proposal</div>
                         <ul class="rate-features">
                             <li>Up to 20 slides</li>
                             <li>Custom layout design</li>
-                            <li>Chart / data visualization</li>
+                            <li>Data visualization</li>
                             <li>2x revisi</li>
                         </ul>
                     </div>
 
                     <div class="rate-card">
                         <div class="rate-name">Executive Deck</div>
-                        <div class="rate-price">Rp7.500.000 <span>mulai dari</span></div>
-                        <div class="rate-suitable">Board meeting • Investor pitch • RAKER</div>
+                        <div class="rate-price">Rp5.000.000 <span>mulai dari</span></div>
+                        <div class="rate-suitable">Board meeting • Investor pitch</div>
                         <ul class="rate-features">
                             <li>Up to 30 slides</li>
                             <li>Full redesign</li>
                             <li>Storytelling structure</li>
                             <li>Premium visual style</li>
-                            <li>Priority handling</li>
                             <li>3x revisi</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Academic Package -->
-            <div class="rate-category">
-                <h3 class="rate-category-title">🎓 Academic / Student Package</h3>
-                <div class="rate-cards">
-                    <div class="rate-card">
-                        <div class="rate-name">Basic Academic</div>
-                        <div class="rate-price">Rp500.000 <span>mulai dari</span></div>
-                        <div class="rate-suitable">Tugas kuliah • Presentasi kelas • Seminar</div>
-                        <ul class="rate-features">
-                            <li>Up to 10 slides</li>
-                            <li>Simple clean design</li>
-                            <li>1x revisi</li>
-                        </ul>
-                    </div>
-
-                    <div class="rate-card popular">
-                        <span class="popular-badge">BEST VALUE</span>
-                        <div class="rate-name">Thesis / Sidang Deck</div>
-                        <div class="rate-price">Rp900.000 <span>mulai dari</span></div>
-                        <div class="rate-suitable">Sidang skripsi • Tesis • Business competition</div>
-                        <ul class="rate-features">
-                            <li>Up to 15 slides</li>
-                            <li>Professional structure</li>
-                            <li>Visual improvement</li>
-                            <li>2x revisi</li>
                         </ul>
                     </div>
                 </div>
@@ -1147,16 +1353,8 @@
                 <h3 class="rate-category-title">⚡ Add-on Services</h3>
                 <div class="addons-grid">
                     <div class="addon-item">
-                        <span class="addon-name">Extra Slide</span>
-                        <span class="addon-price">Rp150.000/slide</span>
-                    </div>
-                    <div class="addon-item">
-                        <span class="addon-name">Additional Presenter</span>
-                        <span class="addon-price">+Rp500.000/orang</span>
-                    </div>
-                    <div class="addon-item">
-                        <span class="addon-name">Presenter Notes</span>
-                        <span class="addon-price">+Rp500.000</span>
+                        <span class="addon-name">Extra Slide / Page</span>
+                        <span class="addon-price">Rp150.000</span>
                     </div>
                     <div class="addon-item">
                         <span class="addon-name">Additional Revision</span>
@@ -1168,18 +1366,26 @@
                     </div>
                     <div class="addon-item">
                         <span class="addon-name">Custom Infographic</span>
-                        <span class="addon-price">Rp300.000/slide</span>
+                        <span class="addon-price">Rp300.000</span>
+                    </div>
+                    <div class="addon-item">
+                        <span class="addon-name">Data Source Integration</span>
+                        <span class="addon-price">Rp500.000</span>
+                    </div>
+                    <div class="addon-item">
+                        <span class="addon-name">Presenter Notes</span>
+                        <span class="addon-price">+Rp300.000</span>
                     </div>
                 </div>
             </div>
 
-            <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; margin-top: 3rem;">
-                <h4 style="margin-bottom: 1rem;">📋 Notes</h4>
-                <ul style="list-style: none; color: rgba(255,255,255,0.8);">
-                    <li style="padding: 0.5rem 0;">• Harga final menyesuaikan kompleksitas data, deadline, dan brief project</li>
-                    <li style="padding: 0.5rem 0;">• Revisi di luar scope awal akan dikenakan biaya tambahan</li>
-                    <li style="padding: 0.5rem 0;">• DP 50% sebelum pengerjaan dimulai</li>
-                    <li style="padding: 0.5rem 0;">• File final dikirim dalam format PPTX / PDF</li>
+            <div class="notes-box">
+                <h4>📋 Catatan Penting</h4>
+                <ul>
+                    <li>• Harga final menyesuaikan kompleksitas data, deadline, dan scope project</li>
+                    <li>• Revisi di luar scope awal akan dikenakan biaya tambahan</li>
+                    <li>• DP 50% sebelum pengerjaan dimulai</li>
+                    <li>• File final dikirim dalam format sesuai kebutuhan (PPTX / PDF / Excel / CSV)</li>
                 </ul>
             </div>
         </div>
@@ -1191,35 +1397,35 @@
             <div class="section-header">
                 <span class="section-tag">How It Works</span>
                 <h2 class="section-title">Proses Kerja</h2>
-                <p class="section-subtitle">4 langkah sederhana untuk mendapatkan presentasi impian Anda</p>
+                <p class="section-subtitle">4 langkah sederhana untuk mendapatkan solusi data dan presentasi impian Anda</p>
             </div>
 
             <div class="process-grid">
                 <div class="process-step">
                     <div class="process-number">1</div>
                     <h3 class="process-title">Brief & Konsultasi</h3>
-                    <p class="process-desc">Diskusi kebutuhan, tujuan presentasi, dan preferensi desain Anda</p>
+                    <p class="process-desc">Diskusi kebutuhan, tujuan, dan preferensi solusi yang Anda inginkan</p>
                 </div>
                 <div class="process-step">
                     <div class="process-number">2</div>
                     <h3 class="process-title">Proposal & DP</h3>
-                    <p class="process-desc">Kami kirimkan proposal harga. Setelah deal, DP 50% untuk mulai pengerjaan</p>
+                    <p class="process-desc">Proposal harga dikirim, DP 50% untuk mulai pengerjaan</p>
                 </div>
                 <div class="process-step">
                     <div class="process-number">3</div>
-                    <h3 class="process-title">Desain & Revisi</h3>
-                    <p class="process-desc">Proses desain dimulai. Review bersama dan revisi sesuai feedback</p>
+                    <h3 class="process-title">Eksekusi & Revisi</h3>
+                    <p class="process-desc">Pengerjaan dimulai, review bersama, dan revisi sesuai feedback</p>
                 </div>
                 <div class="process-step">
                     <div class="process-number">4</div>
                     <h3 class="process-title">Final & Delivery</h3>
-                    <p class="process-desc">Pelunasan dan file final (PPTX/PDF) dikirimkan ke Anda</p>
+                    <p class="process-desc">Pelunasan dan file final dikirimkan ke Anda</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Testimonials Section -->
     <section id="testimonials">
         <div class="container">
             <div class="section-header">
@@ -1228,39 +1434,41 @@
                 <p class="section-subtitle">Feedback dari klien yang telah menggunakan jasa kami</p>
             </div>
 
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Pitch deck yang dibuat sangat profesional dan membantu kami closing deal dengan investor. Prosesnya cepat dan komunikasinya sangat baik. Highly recommended!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AS</div>
-                        <div>
-                            <div class="author-name">Andi Susanto</div>
-                            <div class="author-role">CEO, TechVenture Indonesia</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="testimonial-grid" id="testimonialGrid">
+                <!-- Testimonials will be rendered by JavaScript -->
+            </div>
 
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Sidang skripsi saya berjalan lancar berkat presentasi yang rapi dan mudah dipahami. Dosen penguji sampai memuji visualisasinya. Worth every rupiah!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">RW</div>
-                        <div>
-                            <div class="author-name">Rina Wijaya</div>
-                            <div class="author-role">Mahasiswa, Universitas Indonesia</div>
+            <!-- Testimonial Form -->
+            <div class="testimonial-form">
+                <h3>💬 Kirim Testimoni</h3>
+                <form id="testimonialForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input type="text" id="testiName" placeholder="Nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Pekerjaan / Role</label>
+                            <input type="text" id="testiRole" placeholder="CEO, Mahasiswa, dll">
                         </div>
                     </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Sudah 3 kali pakai jasa mereka untuk berbagai kebutuhan presentasi perusahaan. Konsisten kualitasnya dan selalu on-time delivery."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">BP</div>
-                        <div>
-                            <div class="author-name">Budi Pratama</div>
-                            <div class="author-role">Marketing Director, PT Global Sejahtera</div>
+                    <div class="form-group">
+                        <label>Rating</label>
+                        <div class="star-rating-input" id="starRatingInput">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
                         </div>
+                        <input type="hidden" id="testiRating" value="5">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label>Testimoni</label>
+                        <textarea id="testiText" placeholder="Ceritakan pengalaman Anda menggunakan jasa kami..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kirim Testimoni</button>
+                </form>
             </div>
         </div>
     </section>
@@ -1271,13 +1479,13 @@
             <div class="section-header">
                 <span class="section-tag">Get in Touch</span>
                 <h2 class="section-title">Mari Berkolaborasi</h2>
-                <p class="section-subtitle">Ready to help your next presentation look sharper, clearer, and more convincing</p>
+                <p class="section-subtitle">Siap membantu Anda mengubah data menjadi keputusan bisnis yang lebih baik</p>
             </div>
 
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Hubungi Kami</h3>
-                    <p>Konsultasikan kebutuhan presentasi Anda. Kami siap membantu dari brief hingga delivery.</p>
+                    <h3>Hubungi Saya</h3>
+                    <p>Konsultasikan kebutuhan data dan presentasi Anda. Saya siap membantu dari brief hingga delivery.</p>
 
                     <div class="contact-item">
                         <div class="contact-icon">📱</div>
@@ -1291,7 +1499,7 @@
                         <div class="contact-icon">✉️</div>
                         <div>
                             <div class="contact-label">Email</div>
-                            <div class="contact-value">hello@slidestudio.id</div>
+                            <div class="contact-value">hello@widhidhana.id</div>
                         </div>
                     </div>
 
@@ -1311,12 +1519,12 @@
                         </div>
                     </div>
 
-                    <div style="margin-top: 2rem;">
-                        <h4 style="margin-bottom: 1rem;">Follow Us</h4>
-                        <div style="display: flex; gap: 1rem;">
-                            <a href="#" style="width: 45px; height: 45px; background: var(--light); border-radius: 10px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.3rem;">📸</a>
-                            <a href="#" style="width: 45px; height: 45px; background: var(--light); border-radius: 10px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.3rem;">💼</a>
-                            <a href="#" style="width: 45px; height: 45px; background: var(--light); border-radius: 10px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.3rem;">🐦</a>
+                    <div>
+                        <h4 style="margin-bottom: 12px; font-size: 0.95rem;">Follow Me</h4>
+                        <div class="social-links">
+                            <a href="#" aria-label="Instagram">📸</a>
+                            <a href="#" aria-label="LinkedIn">💼</a>
+                            <a href="#" aria-label="Twitter">🐦</a>
                         </div>
                     </div>
                 </div>
@@ -1326,11 +1534,11 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Nama Lengkap</label>
-                                <input type="text" placeholder="John Doe" required>
+                                <input type="text" placeholder="Nama Anda" required>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" placeholder="john@example.com" required>
+                                <input type="email" placeholder="email@example.com" required>
                             </div>
                         </div>
                         <div class="form-row">
@@ -1339,14 +1547,13 @@
                                 <input type="tel" placeholder="08123456789" required>
                             </div>
                             <div class="form-group">
-                                <label>Paket</label>
+                                <label>Layanan</label>
                                 <select required>
-                                    <option value="">Pilih Paket</option>
-                                    <option value="starter">Starter Deck - Rp1.5jt</option>
-                                    <option value="business">Business Deck - Rp3.5jt</option>
-                                    <option value="executive">Executive Deck - Rp7.5jt</option>
-                                    <option value="academic">Basic Academic - Rp500rb</option>
-                                    <option value="thesis">Thesis/Sidang - Rp900rb</option>
+                                    <option value="">Pilih Layanan</option>
+                                    <option value="analysis">Data Analysis & Reporting</option>
+                                    <option value="dashboard">Dashboard & Visualization</option>
+                                    <option value="system">Business System Development</option>
+                                    <option value="presentation">Presentation & Business Deck</option>
                                     <option value="custom">Custom / Konsultasi</option>
                                 </select>
                             </div>
@@ -1357,7 +1564,7 @@
                         </div>
                         <div class="form-group">
                             <label>Detail Kebutuhan</label>
-                            <textarea placeholder="Ceritakan kebutuhan presentasi Anda: tujuan, jumlah slide, konten yang sudah ada, dll..." required></textarea>
+                            <textarea placeholder="Ceritakan kebutuhan Anda: tujuan, data yang dimiliki, jumlah slide, fitur yang diinginkan, dll..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Inquiry</button>
                     </form>
@@ -1371,16 +1578,16 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <div class="logo">Slide<span>Studio</span></div>
-                    <p style="margin-top: 1rem;">Professional presentation design studio untuk corporate, startup, agency, dan akademik. Membuat presentasi Anda lebih tajam, jelas, dan meyakinkan.</p>
+                    <div class="logo">Widhi<span>Dhana</span></div>
+                    <p>Mengubah data mentah menjadi insight yang mudah dipahami dan dapat ditindaklanjuti. Data Analyst • Business Solutions • Presentation Designer.</p>
                 </div>
                 <div>
-                    <h4 class="footer-title">Services</h4>
+                    <h4 class="footer-title">Layanan</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Pitch Deck</a></li>
-                        <li><a href="#">Company Profile</a></li>
-                        <li><a href="#">Sales Proposal</a></li>
-                        <li><a href="#">Academic Deck</a></li>
+                        <li><a href="#">Data Analysis</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Business System</a></li>
+                        <li><a href="#">Presentation Design</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1393,16 +1600,16 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-title">Contact</h4>
+                    <h4 class="footer-title">Kontak</h4>
                     <ul class="footer-links">
                         <li><a href="tel:+6281234567890">+62 812-3456-7890</a></li>
-                        <li><a href="mailto:hello@slidestudio.id">hello@slidestudio.id</a></li>
+                        <li><a href="mailto:hello@widhidhana.id">hello@widhidhana.id</a></li>
                         <li><a href="#">Jakarta, Indonesia</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 SlideStudio. All rights reserved.</p>
+                <p>© 2026 Widhi Dhana Y. All rights reserved. | Turning Raw Data Into Clear Business Decisions.</p>
             </div>
         </div>
     </footer>
@@ -1421,155 +1628,391 @@
     </div>
 
     <script>
-        // Portfolio Data
-        const portfolioData = [
-            {
-                title: "TechVenture Series A Pitch Deck",
-                category: "Investor Pitch",
-                client: "TechVenture Indonesia",
-                slides: "25 Slides",
-                duration: "2 minggu",
-                gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                description: "Pitch deck komprehensif untuk startup fintech yang sedang fundraising Series A. Mencakup problem-solution fit, market size analysis, competitive landscape, business model, traction metrics, financial projections, dan team overview. Deck ini berhasil membantu klien mendapatkan funding sebesar $5M dari venture capital ternama."
-            },
-            {
-                title: "Annual Report PT Maju Bersama",
-                category: "Corporate",
-                client: "PT Maju Bersama",
-                slides: "40 Slides",
-                duration: "3 minggu",
-                gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-                description: "Laporan tahunan untuk RUPS dengan visualisasi data komprehensif meliputi financial highlights, operational performance, sustainability report, dan future outlook. Dikerjakan dalam format bilingual (Indonesia-English) dengan infografis custom dan chart interaktif."
-            },
-            {
-                title: "Agency Credentials Deck",
-                category: "Sales Proposal",
-                client: "Digital Marketing Agency",
-                slides: "30 Slides",
-                duration: "10 hari",
-                gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-                description: "Company profile dan credentials deck untuk agency digital marketing yang pitching ke klien enterprise. Menampilkan portfolio showcase, case studies dengan metrics, service offerings, team expertise, dan client testimonials dalam format yang engaging dan premium."
-            },
-            {
-                title: "Thesis Defense - UI Economics",
-                category: "Academic",
-                client: "Mahasiswa Universitas Indonesia",
-                slides: "15 Slides",
-                duration: "5 hari",
-                gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
-                description: "Presentasi sidang skripsi dengan topik economic policy impact analysis. Menyajikan research background, methodology, data analysis dengan visualisasi statistik yang clear, findings, dan recommendations. Struktur yang memudahkan dosen penguji mengikuti alur penelitian."
-            },
-            {
-                title: "Q4 Strategy Review - FMCG Corp",
-                category: "Board Meeting",
-                client: "Perusahaan FMCG Multinasional",
-                slides: "28 Slides",
-                duration: "2 minggu",
-                gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
-                description: "Executive presentation untuk board of directors dengan strategic roadmap dan financial projections. Mencakup Q4 performance review, market analysis, competitive positioning, strategic initiatives, dan 2026 outlook dengan visualisasi data level C-suite."
-            },
-            {
-                title: "Business Case Competition - Winner",
-                category: "Competition",
-                client: "Tim Mahasiswa",
-                slides: "20 Slides",
-                duration: "1 minggu",
-                gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-                description: "Deck untuk kompetisi bisnis tingkat nasional yang berhasil meraih juara 1. Menyajikan business problem analysis, proposed solution, implementation plan, financial feasibility, dan impact measurement dengan storytelling yang compelling dan visual yang memorable."
-            }
-        ];
+        // ===== DATA =====
+        const portfolioData = [{
+            id: 0,
+            title: 'Sales Dashboard - FMCG Company',
+            category: 'Data Dashboard',
+            desc: 'Dashboard interaktif untuk monitoring penjualan harian, bulanan, dan tahunan dengan visualisasi data real-time. Dilengkapi dengan filter dinamis dan ekspor data.',
+            tags: ['Power BI', 'Dashboard', 'Real-time'],
+            color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+        }, {
+            id: 1,
+            title: 'Annual Report - PT Maju Bersama',
+            category: 'Laporan Bisnis',
+            desc: 'Laporan tahunan dengan visualisasi data komprehensif untuk RUPS perusahaan manufaktur. Menyajikan kinerja keuangan, operasional, dan proyeksi masa depan.',
+            tags: ['Excel', 'Data Viz', 'Bilingual'],
+            color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+        }, {
+            id: 2,
+            title: 'Inventory Management System',
+            category: 'Sistem Bisnis',
+            desc: 'Sistem berbasis web untuk manajemen inventory, supplier, dan reporting bagi UMKM retail. Fitur: stok tracking, reorder alert, dan laporan penjualan.',
+            tags: ['Web App', 'Inventory', 'Reporting'],
+            color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+        }, {
+            id: 3,
+            title: 'Analisis Kepuasan Pelanggan',
+            category: 'Analisis Data',
+            desc: 'Analisis sentimen dan kepuasan pelanggan dari data survey dengan rekomendasi strategis untuk meningkatkan customer experience dan loyalitas.',
+            tags: ['Python', 'Sentiment Analysis', 'Insight'],
+            color: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
+        }, {
+            id: 4,
+            title: 'Q4 Strategy Review - FMCG Corp',
+            category: 'Presentasi Eksekutif',
+            desc: 'Executive presentation untuk board of directors dengan strategic roadmap dan financial projections. Menampilkan analisis kompetitif dan rekomendasi strategis.',
+            tags: ['PowerPoint', 'Executive', 'Strategy'],
+            color: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+        }, {
+            id: 5,
+            title: 'Pitch Deck - Startup Fintech',
+            category: 'Business Deck',
+            desc: 'Pitch deck yang berhasil membantu startup fintech mendapatkan pendanaan Seri A senilai $5M. Menampilkan market analysis, business model, dan traction.',
+            tags: ['Pitch Deck', 'Startup', 'Investor Ready'],
+            color: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
+        }];
 
-        // Modal Functions
+        const defaultTestimonials = [{
+            name: 'Andi Susanto',
+            role: 'CEO, TechVenture Indonesia',
+            text: 'Dashboard yang dibuat sangat membantu tim kami dalam memantau penjualan secara real-time. Prosesnya cepat dan hasilnya sangat profesional!',
+            rating: 5,
+            date: '2026-01-15'
+        }, {
+            name: 'Rina Wijaya',
+            role: 'Owner, Toko Sembako Jaya',
+            text: 'Sistem inventory yang dibangun sangat memudahkan operasional toko kami. Laporan stok dan penjualan jadi lebih rapi dan akurat.',
+            rating: 5,
+            date: '2026-01-20'
+        }, {
+            name: 'Budi Pratama',
+            role: 'Marketing Director, PT Global Sejahtera',
+            text: 'Analisis data yang diberikan sangat mendalam dan membantu kami mengambil keputusan strategis untuk Q4. Sangat direkomendasikan!',
+            rating: 4,
+            date: '2026-02-01'
+        }];
+
+        // ===== LOCAL STORAGE HELPERS =====
+        function getTestimonials() {
+            try {
+                const data = localStorage.getItem('testimonials');
+                if (data) {
+                    return JSON.parse(data);
+                }
+                // Initialize with default testimonials
+                localStorage.setItem('testimonials', JSON.stringify(defaultTestimonials));
+                return defaultTestimonials;
+            } catch {
+                return defaultTestimonials;
+            }
+        }
+
+        function saveTestimonials(testimonials) {
+            localStorage.setItem('testimonials', JSON.stringify(testimonials));
+        }
+
+        function getRatings() {
+            try {
+                const data = localStorage.getItem('projectRatings');
+                if (data) {
+                    return JSON.parse(data);
+                }
+                const initial = {};
+                portfolioData.forEach(p => { initial[p.id] = { total: 0, count: 0, userRatings: [] }; });
+                localStorage.setItem('projectRatings', JSON.stringify(initial));
+                return initial;
+            } catch {
+                return {};
+            }
+        }
+
+        function saveRatings(ratings) {
+            localStorage.setItem('projectRatings', JSON.stringify(ratings));
+        }
+
+        // ===== RENDER PORTFOLIO =====
+        function renderPortfolio() {
+            const grid = document.getElementById('portfolioGrid');
+            const ratings = getRatings();
+
+            grid.innerHTML = portfolioData.map((project, index) => {
+                const rating = ratings[project.id] || { total: 0, count: 0 };
+                const avg = rating.count > 0 ? (rating.total / rating.count) : 0;
+                const avgDisplay = avg > 0 ? avg.toFixed(1) : 'Belum';
+
+                // Build star display
+                let starsHtml = '';
+                for (let i = 1; i <= 5; i++) {
+                    const filled = i <= Math.round(avg);
+                    starsHtml += `<span class="star ${filled ? 'active' : ''}">★</span>`;
+                }
+
+                return `
+                    <div class="portfolio-card">
+                        <div class="portfolio-image" style="background: ${project.color};">
+                            <span class="portfolio-category">${project.category}</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3 class="portfolio-title">${project.title}</h3>
+                            <p class="portfolio-desc">${project.desc}</p>
+                            <div class="portfolio-tags">
+                                ${project.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                            </div>
+                            <div class="rating-section">
+                                <div class="stars" data-project="${project.id}">
+                                    ${[1,2,3,4,5].map(i => `
+                                        <span class="star" data-value="${i}" onclick="rateProject(${project.id}, ${i})">★</span>
+                                    `).join('')}
+                                </div>
+                                <span class="rating-text">(${rating.count} rating) • Avg: ${avgDisplay}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Update star display for each project
+            updateStarDisplay();
+        }
+
+        function updateStarDisplay() {
+            const ratings = getRatings();
+            document.querySelectorAll('.stars').forEach(container => {
+                const projectId = parseInt(container.dataset.project);
+                const rating = ratings[projectId];
+                if (rating && rating.count > 0) {
+                    const avg = rating.total / rating.count;
+                    const stars = container.querySelectorAll('.star');
+                    stars.forEach((star, index) => {
+                        star.classList.toggle('active', index < Math.round(avg));
+                    });
+                }
+            });
+        }
+
+        // ===== RATE PROJECT =====
+        function rateProject(projectId, value) {
+            const ratings = getRatings();
+            if (!ratings[projectId]) {
+                ratings[projectId] = { total: 0, count: 0, userRatings: [] };
+            }
+
+            // Check if user already rated this project (simple check using session)
+            const sessionKey = `rated_${projectId}`;
+            if (sessionStorage.getItem(sessionKey)) {
+                showToast('Info', 'Anda sudah memberikan rating untuk project ini.', 'error');
+                return;
+            }
+
+            ratings[projectId].total += value;
+            ratings[projectId].count += 1;
+            saveRatings(ratings);
+            sessionStorage.setItem(sessionKey, 'true');
+
+            renderPortfolio();
+            showToast('Terima kasih!', `Rating ${value} bintang berhasil diberikan.`, 'success');
+        }
+
+        // ===== RENDER TESTIMONIALS =====
+        function renderTestimonials() {
+            const grid = document.getElementById('testimonialGrid');
+            const testimonials = getTestimonials();
+
+            if (testimonials.length === 0) {
+                grid.innerHTML = `<div class="testimonial-empty">Belum ada testimoni. Jadilah yang pertama!</div>`;
+                return;
+            }
+
+            grid.innerHTML = testimonials.map(t => {
+                const stars = '★'.repeat(t.rating) + '☆'.repeat(5 - t.rating);
+                const initials = t.name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+                const date = new Date(t.date).toLocaleDateString('id-ID', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                return `
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            ${stars.split('').map(s => `<span class="star">${s}</span>`).join('')}
+                        </div>
+                        <p class="testimonial-text">"${t.text}"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">${initials}</div>
+                            <div>
+                                <div class="author-name">${t.name}</div>
+                                <div class="author-role">${t.role || 'Client'}</div>
+                            </div>
+                        </div>
+                        <div class="testimonial-date">${date}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ===== SUBMIT TESTIMONIAL =====
+        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('testiName').value.trim();
+            const role = document.getElementById('testiRole').value.trim();
+            const text = document.getElementById('testiText').value.trim();
+            const rating = parseInt(document.getElementById('testiRating').value);
+
+            if (!name || !text) {
+                showToast('Error', 'Nama dan testimoni harus diisi.', 'error');
+                return;
+            }
+
+            const testimonials = getTestimonials();
+            testimonials.unshift({
+                name: name,
+                role: role || 'Client',
+                text: text,
+                rating: rating,
+                date: new Date().toISOString().split('T')[0]
+            });
+
+            saveTestimonials(testimonials);
+            renderTestimonials();
+            this.reset();
+            document.getElementById('testiRating').value = '5';
+            updateStarRatingDisplay(5);
+
+            showToast('Terima kasih!', 'Testimoni Anda berhasil dikirim.', 'success');
+        });
+
+        // ===== STAR RATING INPUT =====
+        const starInputs = document.querySelectorAll('#starRatingInput .star');
+        const ratingHidden = document.getElementById('testiRating');
+
+        starInputs.forEach(star => {
+            star.addEventListener('click', function() {
+                const value = parseInt(this.dataset.value);
+                ratingHidden.value = value;
+                updateStarRatingDisplay(value);
+            });
+
+            star.addEventListener('mouseenter', function() {
+                const value = parseInt(this.dataset.value);
+                starInputs.forEach(s => {
+                    s.classList.toggle('active', parseInt(s.dataset.value) <= value);
+                });
+            });
+
+            star.addEventListener('mouseleave', function() {
+                updateStarRatingDisplay(parseInt(ratingHidden.value));
+            });
+        });
+
+        function updateStarRatingDisplay(value) {
+            starInputs.forEach(s => {
+                s.classList.toggle('active', parseInt(s.dataset.value) <= value);
+            });
+        }
+
+        // ===== TOAST =====
+        function showToast(title, message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const titleEl = document.getElementById('toastTitle');
+            const msgEl = document.getElementById('toastMessage');
+
+            titleEl.textContent = title;
+            msgEl.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
+
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // ===== MODAL =====
         function openModal(index) {
             const data = portfolioData[index];
-            document.getElementById('modalImage').style.background = data.gradient;
-            document.getElementById('modalTitle').textContent = data.title;
-            document.getElementById('modalMeta').innerHTML = `
-                <span>📁 ${data.category}</span>
-                <span>🏢 ${data.client}</span>
-                <span>📄 ${data.slides}</span>
-                <span>⏱️ ${data.duration}</span>
-            `;
-            document.getElementById('modalDesc').textContent = data.description;
-            document.getElementById('portfolioModal').classList.add('active');
+            const modal = document.getElementById('portfolioModal');
+            const image = document.getElementById('modalImage');
+            const title = document.getElementById('modalTitle');
+            const meta = document.getElementById('modalMeta');
+            const desc = document.getElementById('modalDesc');
+
+            image.style.background = data.color;
+            image.innerHTML = `<span class="portfolio-category">${data.category}</span>`;
+            title.textContent = data.title;
+            meta.textContent = data.category;
+            desc.textContent = data.desc;
+
+            modal.classList.add('open');
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
-            document.getElementById('portfolioModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
+            document.getElementById('portfolioModal').classList.remove('open');
+            document.body.style.overflow = '';
         }
 
-        // Close modal on outside click
         document.getElementById('portfolioModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
+            if (e.target === this) closeModal();
         });
 
-        // Close modal on Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Make portfolio cards clickable for modal
+        document.addEventListener('click', function(e) {
+            const card = e.target.closest('.portfolio-card');
+            if (card && !e.target.closest('.stars') && !e.target.closest('.rating-section')) {
+                const index = Array.from(document.querySelectorAll('.portfolio-card')).indexOf(card);
+                if (index !== -1) openModal(index);
             }
         });
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+        // ===== NAVBAR =====
+        const navbar = document.getElementById('navbar');
+        const scrollProgress = document.getElementById('scrollProgress');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = progress + '%';
+        });
+
+        // ===== MOBILE TOGGLE =====
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('open');
             });
         });
 
-        // Scroll Progress Bar
-        window.addEventListener('scroll', function() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('scrollProgress').style.width = scrolled + '%';
-        });
-
-        // Form Submission
+        // ===== CONTACT FORM =====
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Terima kasih! Pesan Anda telah terkirim. Kami akan menghubungi Anda dalam 1x24 jam.');
+            showToast('Terima kasih!', 'Pesan Anda telah terkirim. Saya akan segera menghubungi Anda.', 'success');
             this.reset();
         });
 
-        // Navbar Background on Scroll
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-            } else {
-                nav.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
-            }
-        });
-
-        // Intersection Observer for Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.portfolio-card, .rate-card, .process-step, .testimonial-card').forEach(el => {
-            observer.observe(el);
-        });
+        // ===== INIT =====
+        renderPortfolio();
+        renderTestimonials();
+        updateStarRatingDisplay(5);
     </script>
 </body>
 </html>
